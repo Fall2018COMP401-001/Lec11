@@ -44,9 +44,21 @@ public class Playlist {
 				
 			}
 		} catch (NoSuchElementException e) {
+
 			throw new PlaylistFormatException("Error in playlist after "
 					+ songs.size() + " songs");
-		} finally {
+
+		} catch (NegativeSongLengthException e) {
+
+			throw new PlaylistFormatException("Song " + (songs.size()+1) + 
+					" in playlist has illegal length: " + e.getIllegalLength());
+			
+		} catch (RatingOutOfRangeException e) {
+			
+			throw new PlaylistFormatException("Song " + (songs.size()+1) + 
+					" in playlist has out of range rating: " + e.getOutOfRangeRating());
+		}	
+		finally {
 			scanner.close();
 		}
 

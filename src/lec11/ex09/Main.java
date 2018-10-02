@@ -28,7 +28,7 @@ public class Main {
 				s.nextLine();
 			} 
 			catch (RuntimeException e) {
-				System.out.println("Unknown exception: " + e.getMessage());
+				System.out.println("Runtime exception: " + e.getMessage());
 				s.nextLine();
 			}
 			

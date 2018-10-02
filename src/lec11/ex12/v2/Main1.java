@@ -22,5 +22,7 @@ public class Main1 {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Here I am now running the rest of my program");
 	}
 }

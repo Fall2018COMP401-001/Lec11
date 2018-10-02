@@ -19,8 +19,10 @@ public class Main1 {
 		} catch (PlaylistFormatException e) {
 			System.out.println(e.getMessage());
 			System.exit(-1);
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Here I am now running the rest of my program");
 	}
 }

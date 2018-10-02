@@ -18,27 +18,40 @@ public class Playlist {
 			throws PlaylistFormatException, FileNotFoundException {
 		ArrayList<Song> songs = new ArrayList<Song>();
 
-		Scanner scanner = new Scanner(new File(filename));
-
+		Scanner scanner = null;
+		scanner = new Scanner(new File(filename));
+		
 		try {
 			while (scanner.hasNext()) {
 				String song_name = scanner.nextLine();
 				String artist_name = scanner.nextLine();
 				double length = scanner.nextDouble();
 				int rating = scanner.nextInt();
-
+				
 				// Need this next call to skip rest of line
 				scanner.nextLine();
 
 				Song next_song = new Song(song_name, artist_name, length,
 						rating);
 				songs.add(next_song);
-
+				
 			}
 		} catch (NoSuchElementException e) {
+
 			throw new PlaylistFormatException("Error in playlist after "
 					+ songs.size() + " songs");
-		} finally {
+
+		} catch (NegativeSongLengthException e) {
+
+			throw new PlaylistFormatException("Song " + (songs.size()+1) + 
+					" in playlist has illegal length: " + e.getIllegalLength());
+			
+		} catch (RatingOutOfRangeException e) {
+			
+			throw new PlaylistFormatException("Song " + (songs.size()+1) + 
+					" in playlist has out of range rating: " + e.getOutOfRangeRating());
+		}	
+		finally {
 			scanner.close();
 		}
 

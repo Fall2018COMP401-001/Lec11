@@ -22,7 +22,7 @@ public class Main {
 			} catch (RatingOutOfRangeException e) {
 				System.out.println("Rating out of range:" + e.getOutOfRangeRating());
 			} catch (RuntimeException e) {
-				System.out.println("Unknown exception: " + e.getMessage());
+				System.out.println("Runtime exception: " + e.getMessage());
 			} finally {
 				s.nextLine();
 			}

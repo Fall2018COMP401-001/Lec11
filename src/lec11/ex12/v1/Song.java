@@ -8,7 +8,16 @@ public class Song {
 	private int rating;
 	
 	public Song(String name, String artist, 
-			    double length, int rating) {
+			    double length, int rating) 
+			    		throws NegativeSongLengthException, RatingOutOfRangeException
+	{
+		if (length < 0.0) {
+			throw new NegativeSongLengthException(length);
+		}
+		if (rating < 0 || rating > 5) {
+			throw new RatingOutOfRangeException(rating);
+		}
+		
 		this.name = name;
 		this.artist = artist;
 		this.length = length;
