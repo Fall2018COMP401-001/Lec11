@@ -1,0 +1,14 @@
+package lec11.ex03;
+
+public interface Engine {
+
+	static final int MAX_THROTTLE = 10;
+	
+	public enum Gear {PARK, DRIVE, OVERDRIVE, FIRST, SECOND, THIRD, FOURTH, FIFTH};
+	
+	Gear getGear();
+	void setGear(Gear new_gear);
+	int getThrottle();
+	void setThrottle(int throttle);
+
+}
